@@ -1,6 +1,6 @@
 public class LifeConsole {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         System.out.println("================================TESTS FOR PROGRAM LOGIC=====================================");
 
         //equality test
@@ -103,7 +103,8 @@ public class LifeConsole {
         consoleView.displayGeneration(generation,10,10);
         for(int i=0;i<10;i++){
             generation.evolve();
-        consoleView.displayGeneration(generation,10,10);}
+        consoleView.displayGeneration(generation,10,10);
+        Thread.sleep(300);}
 
     }
     }
