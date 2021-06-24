@@ -1,5 +1,7 @@
 import org.junit.Test;
 
+import java.sql.SQLOutput;
+
 import static org.junit.Assert.assertEquals;
 
 public class LifeCelluleTest {
@@ -22,7 +24,7 @@ public class LifeCelluleTest {
         Cellules expected = new LifeCellule(0, 0).neighbors();
 
 
-        assertEquals(actual.size(), expected.size());
+        assertEquals(actual, expected);
     }
 
     @Test

@@ -6,12 +6,13 @@ public class ConsoleView implements View {
         boolean[][] table = toTable(generation.getAliveCells(), rows, columns);
 
         for (int i = 0; i < table.length; i++) {
-            System.out.println();
+
             for (int j = 0; j < table[0].length; j++) {
                 if(table[i][j]){
-                    System.out.print("x");
-                } else {System.out.print("o");}
+                    System.out.print("o");
+                } else {System.out.print("*");} // chnaging view
             }
+            System.out.println();
         }
         System.out.println();
     }
