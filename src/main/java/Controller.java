@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.HBox;
 import javafx.util.Duration;
 
 import java.net.URL;
@@ -29,7 +30,8 @@ public class Controller implements Initializable {
     private Slider countSlider;
     @FXML
     private Button runButton, stopButton, randomizeButton, clearButton;
-
+    @FXML
+    private HBox rootBox;
 
     private Generation generation;
 
@@ -45,6 +47,7 @@ public class Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         createBoard(DEFAULT_SIZE, DEFAULT_PROB);
+        attachResizeListener();
 
     }
 
@@ -86,7 +89,7 @@ public class Controller implements Initializable {
             createBoard(DEFAULT_SIZE, (double) newValue.intValue() / 100);
         });
     }
-    
+
     private void toggleButtons(boolean enable) {
         countSlider.setDisable(!enable);
 
@@ -124,6 +127,16 @@ public class Controller implements Initializable {
         base.getChildren().add(new Group(display.getPane()));
     }
 
+    private void attachResizeListener() {
+        rootBox.widthProperty().addListener((observable, oldValue, newValue) -> {
+            int newWidth = newValue.intValue();
+            if (newWidth > 250 && Math.abs(newWidth - windowWidth) >= 50) {
+                windowWidth = newWidth;
+                cellSizePx = newWidth / 25;
+                createDisplay();
+            }
+        });
+    }
 
 
     public void setHostServices(HostServices hostServices) {
