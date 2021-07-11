@@ -5,12 +5,22 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
+import javafx.geometry.Insets;
 import javafx.scene.Group;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
+import javafx.scene.text.TextFlow;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.net.URL;
@@ -136,6 +146,37 @@ public class Controller implements Initializable {
                 createDisplay();
             }
         });
+    }
+    @FXML
+    private void onAuthor(Event evt) {
+        // TEXT //
+        Text text1 = new Text("Game of Life Instituto.....\n");
+        text1.setFont(Font.font(50));
+        Text text2 = new Text(
+                "Author i konrad wodnicki etc "
+        );
+        //Text text3 = new Text("\n\nRules\n");
+        //text3.setFont(Font.font(20));
+        Text text4 = new Text(
+                "Project created for MoP subject etc. "
+        );
+
+        String url = "LINK DO REPO";
+        Hyperlink link = new Hyperlink(url);
+        link.setOnAction(__ -> getHostService().showDocument(url));
+        TextFlow tf = new TextFlow(text1, text2, text4, link);
+        tf.setPadding(new Insets(10, 10, 10, 10));
+        tf.setTextAlignment(TextAlignment.JUSTIFY);
+
+        final Stage dialog = new Stage();
+        dialog.initModality(Modality.APPLICATION_MODAL);
+        dialog.initOwner(new Stage());
+        VBox dialogVbox = new VBox(20);
+        dialogVbox.getChildren().add(tf);
+        Scene dialogScene = new Scene(dialogVbox, 700, 500);
+        dialog.setScene(dialogScene);
+        dialog.show();
+
     }
 
 

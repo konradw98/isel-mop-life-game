@@ -100,7 +100,7 @@
             </BorderPane>
             <BorderPane prefHeight="39.0" prefWidth="195.0">
                <left>
-                <Button fx:id="runButton" mnemonicParsing="false" onAction="#onRun" prefHeight="25.0" prefWidth="49.0" text="Run" BorderPane.alignment="CENTER" />
+                  <Button fx:id="runButton" mnemonicParsing="false" onAction="#onRun" prefHeight="25.0" prefWidth="49.0" text="Run" BorderPane.alignment="CENTER" />
                </left>
                <center>
                   <Button fx:id="stopButton" disable="true" mnemonicParsing="false" onAction="#onStop" prefHeight="31.0" prefWidth="55.0" text="Stop" BorderPane.alignment="CENTER" />
@@ -109,6 +109,7 @@
                   <Separator prefHeight="14.0" prefWidth="195.0" BorderPane.alignment="CENTER" />
                </top>
                <right>
+                  <Button fx:id="authorButton" mnemonicParsing="false" onAction="#onAuthor" text="Author" BorderPane.alignment="CENTER" />
                </right>
                <padding>
                   <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
